@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from hhparsing import parce
-import pprint
 
 app = Flask(__name__)
 
@@ -14,7 +13,7 @@ def form_get():
 
 @app.route('/form/', methods=['POST'])
 def form_post():
-    # Получаем данные формы поиска с сайта
+    # Получаем данные формы поиска
     vacancy = request.form['vacancy']
     where = request.form['where']
     region = request.form['where_area']
