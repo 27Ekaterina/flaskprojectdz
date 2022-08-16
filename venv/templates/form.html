@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>GAYD</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/static/css/styles.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><img src="/static/assets/img/navbar-logo.svg" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav" href="/">Главная</a></li>
+                        <li class="nav-item"><a class="nav" href="/about/">Результат поиска</a></li>
+                        <li class="nav-item"><a class="nav" href="/contacts/">Контакты</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+       <!-- FormSearch-->
+        <section class="page-section" id="FormSearch">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Форма поиска</h2>
+                    <h3 class="section-subheading text-muted">Задайте параметры для поиска вакансий</h3>
+                </div>
+                <form method="post">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <span class="fa-stack fa-4x">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                            </span>
+                                <br>
+                                <br>
+                                    <input class="form-control" type="text" name="vacancy" value="" placeholder="ключевые слова для поиска">
+                                <br>
+                                <p><select class="form-control" name="where">
+                                    <option value="all">Везде</option>
+                                    <option value="name">В названии вакансии</option>
+                                    <option value="description">В описании вакансии</option>
+                                </select></p>
+                                <br>
+                        </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                        </span>
+                            <br>
+                            <br>
+                                <input class="form-control" type="text" name="area" value="Название региона"
+                                <br>
+                                <br>
+                                <p><select class="form-control" name="where_area">
+                                    <option value="all">Везде</option>
+                                    <option value="Moscow">Москва</option>
+                                    <option selected value="SPB">Санкт-Петербург</option>
+                                </select></p>
+                                </div>
+                        <div class="col-md-4">
+                            <span class="fa-stack fa-4x">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <br>
+                            <br>
+                            <input class="btn btn-dark" type="submit" value="Искать вакансии">
+                </form>
+        </section>
+        <div class="text-center">
+        <a href="/">На главную</a>
+        <div>
+
+    </body>
+</html>
