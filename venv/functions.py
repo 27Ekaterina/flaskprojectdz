@@ -24,5 +24,5 @@ def average_salary(database):
         max_zp += sum_zp_max
         vacancies_with_zp_min += n
         vacancies_with_zp_max += n1
-    av_zp = (min_zp / vacancies_with_zp_min + max_zp / vacancies_with_zp_max) / 2
+    av_zp = round((min_zp / vacancies_with_zp_min + max_zp / vacancies_with_zp_max) / 2, 2)
     return av_zp

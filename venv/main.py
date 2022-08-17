@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from hhparsing import parce
+# from sqlin import add_skills
+from sqlite3 import connect
 
 app = Flask(__name__)
 

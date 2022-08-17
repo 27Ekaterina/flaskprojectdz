@@ -4,6 +4,10 @@ import pprint
 from functions import *
 import json
 import time
+import sqlite3
+from sqlite3 import connect
+
+
 
 def parce(vacancy, where, area=113):
 
@@ -14,12 +18,14 @@ def parce(vacancy, where, area=113):
             url = 'https://api.hh.ru/vacancies'
             params = {
                 'text': vacancy if where == 'all' else f'NAME:{vacancy}' if where == 'name' else f'DESCRIPTION:{vacancy}',
+                'where': where,
                 'area': 113 if area == 'all' else '1' if area == 'Moscow' else '2',
                 'page': page
             }
             result = requests.get(url, params=params).json()
             time.sleep(0.25)
             database.append(result)
+
         av_zp = average_salary(database)
         count_vacancies = result['found']
 
@@ -70,6 +76,54 @@ def parce(vacancy, where, area=113):
                        "key_skills": key_skills_list[0:4],
                        "key_skills_count": result[0:4],
                        "key_skills_percent": key_skills2_sort[0:4]}
+
+        # Заполнение таблиц базы данных результатами поиска
+
+        conn = sqlite3.connect('hhsqlite.sqlite')
+        cur = conn.cursor()
+        # проверка наличия региона/условия поиска/вакансии в таблицах
+        rest = cur.execute('select id from area where area.regioncode = ?', (params['area'],)).fetchone()
+        condition = cur.execute('select id from where_search where where_search.name = ?',
+                                (params['where'],)).fetchone()
+        vacancies = cur.execute('select id from words where words.word = ?', (vacancy,)).fetchone()
+        if not rest:
+            # добавление строки в таблицу регионов.
+            cur.execute('insert into area values (null, ?)', (params['area'],))
+        if not condition:
+            # добавление строки в таблицу условий поиска.
+            cur.execute('insert into where_search values (null, ?)', (params['where'],))
+        if not vacancies:
+            # добавление строки в таблицу вакансий.
+            cur.execute('insert into words values (null, ?)', (vacancy,))
+
+        for item in result_file["key_skills_percent"]:
+            slills_list = cur.execute('select * from skills where skills.name = ?', (item[0],)).fetchone()
+            if not slills_list:
+            # добавление строки в таблицу требований к соискателям.
+                cur.execute('insert into skills values (null, ?)', (item[0],))
+
+        # заполнение итоговой таблицы
+        cur.execute('select id from words where words.word = ?', (vacancy,))
+        result = cur.fetchone()
+        word_id = result[0]
+        cur.execute('select id from area where area.regioncode = ?', (params['area'],))
+        result = cur.fetchone()
+        area_id = result[0]
+        condition = cur.execute('select id from where_search where where_search.name = ?', (params['where'],))
+        result = cur.fetchone()
+        where_search_id = result[0]
+        for item in result_file["key_skills_percent"]:
+            cur.execute('select id from skills where skills.name = ?', (item[0],))
+            result = cur.fetchone()
+            skill_id = result[0]
+            cur.execute('select * from wordskills as ws where ws.id_word = ? and ws.id_skill = ? and ws.id_area = ? and ws.id_where_search = ?', (word_id, skill_id, area_id, where_search_id))
+            res = cur.fetchone()
+            if not res:
+                cur.execute('insert into wordskills values (?, ?, ?, ?, ?, ?, ?)', (word_id, skill_id, area_id, where_search_id, count_vacancies, av_zp, item[1]))
+            else:
+                 cur.execute('update wordskills as ws set count = ?, sellary = ?, percent = ? where ws.id_word = ? and ws.id_skill = ? and ws.id_area = ? and ws.id_where_search = ?', (count_vacancies, av_zp, item[1], word_id, skill_id, area_id, where_search_id))
+
+        conn.commit()
 
         FILE_NAME = "hhparsing.json"
         with open(FILE_NAME, 'w') as f:
