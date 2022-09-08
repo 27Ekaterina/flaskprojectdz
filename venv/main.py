@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from hhparsing import parce
-# from sqlin import add_skills
+from hhparsingAlh import parce_Alh
 from sqlite3 import connect
 
 app = Flask(__name__)
@@ -20,7 +20,7 @@ def form_post():
     where = request.form['where']
     region = request.form['where_area']
     search = [vacancy, where, region]
-    data = parce(vacancy, where, region)
+    data = parce_Alh(vacancy, where, region)
     return render_template('results.html', data=data, search=search)
 
 
