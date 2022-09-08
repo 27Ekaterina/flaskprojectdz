@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77d0c5d9-2c8a-412b-8d1e-1b639b379c43" name="Changes" comment="flasksite+sqlite">
-      <change afterPath="$PROJECT_DIR$/venv/Alh_query_result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/hhparsingAlh.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/orm_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/hhparsing.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/hhparsing.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="77d0c5d9-2c8a-412b-8d1e-1b639b379c43" name="Changes" comment="flasksite+sqlalchemy" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -199,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661801593943</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="flasksite+sqlalchemy">
+      <created>1662664905327</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662664905327</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,7 +216,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge remote-tracking branch 'origin/flasksite2' into flasksite2" />
     <MESSAGE value="flasksite+sqlite" />
-    <option name="LAST_COMMIT_MESSAGE" value="flasksite+sqlite" />
+    <MESSAGE value="flasksite+sqlalchemy" />
+    <option name="LAST_COMMIT_MESSAGE" value="flasksite+sqlalchemy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
